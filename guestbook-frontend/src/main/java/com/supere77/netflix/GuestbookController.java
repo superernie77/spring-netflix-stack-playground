@@ -5,12 +5,11 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -29,11 +28,11 @@ public class GuestbookController {
 		restTemplate = new RestTemplate();
 	}
 	
-	private static final String EXCHANGE_URL = "http://localhost:8080/guestbook/";
+	private static final String EXCHANGE_URL = "http://localhost:8000/guestbook/";
 
 	private RestTemplate restTemplate = new RestTemplate();
 	
-	@RequestMapping(value = {"/guestbook"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"/"}, method = RequestMethod.GET)
 	public ModelAndView showGuestbook() {
 		ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("guestbook");
@@ -54,7 +53,7 @@ public class GuestbookController {
         return modelAndView;
 	}
 	
-	@RequestMapping(value = {"/guestbook"}, method = RequestMethod.POST)
+	@RequestMapping(value = {"/"}, method = RequestMethod.POST)
 	public ModelAndView addEntry(@Valid GuestbookEntry entry) {
 		ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("guestbook");

@@ -1,0 +1,13 @@
+server:
+  port: 8000
+  
+
+zuul:
+  routes:
+    backend:
+      path: /guestbook/**
+      url: http://localhost:8080/guestbook/
+      
+    frontend:
+      path: /**
+      url: http://localhost:8081/
