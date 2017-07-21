@@ -1,12 +1,12 @@
 # spring-netflix-stack-playground
-Demo Application using the Netflix stack (Zuul, Hysterix, Eureka, Feign)
+Demo application using the Netflix stack (Zuul, Hysterix, Eureka, Feign)
 
-All Applications are build with Spring-Boot and Maven. 
+All applications are build with Spring-Boot and Maven. Run mvn install in each folder to create a fat-jar. Execute jat with "java -jar [name of jar]"
 
 The following applications are available:
 
-- guestbook-backend : Backend REST-Service for GuesbookEntries
-- guestbook-frontend: Thymeleaf Page + Spring MVC 
+- guestbook-backend : Backend REST-Service for GuestbookEntries
+- guestbook-frontend: Thymeleaf page + Spring MVC 
 - guestbook-discovery: Eureka discovery application
 - guestbook-proxy: Zuul Proxy server
 - guestbook-mail: Mail web service 
