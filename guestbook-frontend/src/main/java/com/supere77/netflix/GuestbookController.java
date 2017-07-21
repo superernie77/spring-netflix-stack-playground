@@ -14,6 +14,9 @@ public class GuestbookController {
 	@Autowired
 	private BackendClient backendClient;
 	
+	@Autowired
+	private BackendService backendService;
+	
 	@RequestMapping(value = {"/"}, method = RequestMethod.GET)
 	public ModelAndView showGuestbook() {
 		ModelAndView modelAndView = new ModelAndView();
@@ -31,7 +34,10 @@ public class GuestbookController {
 		ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("guestbook");
         
-        // webservce call with Feign-Client
+        // call with circuitbreaker
+        //backendService.create(entry);
+        
+        
         backendClient.create(entry);
         
 	    modelAndView.addObject("entries", backendClient.getAll().getBody());
