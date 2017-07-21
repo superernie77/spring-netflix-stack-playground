@@ -14,8 +14,11 @@ zuul:
   routes:
     backend:
       path: /guestbook/**
-      url: http://localhost:8080/guestbook/
+      #url: http://localhost:8080/guestbook/   use this to define hard coded URLs
+      service-id: backend # uses eureka service name
+      strip-prefix: false  #keeps the URL prefix "/guestbook" before redirecting to backend
       
     frontend:
       path: /**
-      url: http://localhost:8081/
+      #url: http://localhost:8081/
+      service-id: frontend
