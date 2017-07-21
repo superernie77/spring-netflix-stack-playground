@@ -1,0 +1,11 @@
+server:
+  port: ${server_port:8761} # either JVM param server_port or 8761
+  
+  
+eureka:
+  client:
+    register-with-eureka: false  # eureka server will not register itself
+    fetch-registry: false    # don't load registry from elswhere
+  server:
+    wait-time-in-ms-when-sync-empty: 0
+  
