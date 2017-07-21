@@ -22,3 +22,13 @@ zuul:
       path: /**
       #url: http://localhost:8081/
       service-id: frontend
+      
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds 15000
+
+

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -22,6 +23,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Controller
 public class GuestbookController {
 	
+	@Autowired
+	private BackendClient backendClient;
 	
 	@PostConstruct
 	public void config() {
@@ -58,17 +61,25 @@ public class GuestbookController {
 		ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("guestbook");
         
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(EXCHANGE_URL);
+        // webservce call with Feign-Client
+        backendClient.create(entry);
         
+        // call with RestTemplate
+        /*
+         * UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(EXCHANGE_URL);
         MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
 		headers.add("Content-Type", "application/json");
 		HttpEntity<?> request = new HttpEntity(entry, headers);
 		
 		 restTemplate.exchange(builder.build().encode().toUriString(),
 				 HttpMethod.POST, request, GuestbookEntry.class);
-		 
-		 request = new HttpEntity(null, headers);
-		 ResponseEntity<List<GuestbookEntry>> rateResponse =
+         */
+        
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(EXCHANGE_URL);
+        MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
+		headers.add("Content-Type", "application/json"); 
+		HttpEntity<?> request = new HttpEntity(null, headers);
+		ResponseEntity<List<GuestbookEntry>> rateResponse =
 	                restTemplate.exchange(builder.build().encode().toUriString(),
 	                            HttpMethod.GET, request, new ParameterizedTypeReference<List<GuestbookEntry>>() {});
 		 List<GuestbookEntry> entries = rateResponse.getBody();

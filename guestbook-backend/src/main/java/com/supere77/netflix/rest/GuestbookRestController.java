@@ -32,7 +32,7 @@ public class GuestbookRestController {
 	private GuestbookRepository repository;
 	
 	@RequestMapping(value = "/" , method= RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE , produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> create(GuestbookEntry entry){
+	public ResponseEntity<GuestbookEntry> create(GuestbookEntry entry){
 		repository.save(entry);
 		return ResponseEntity.ok(entry);
 	}
