@@ -1,7 +1,7 @@
 # spring-netflix-stack-playground
 Demo application using the Netflix stack (Zuul, Hysterix, Eureka, Feign)
 
-All applications are build with Spring-Boot and Maven. Run mvn install in each folder to create a fat-jar. Execute jat with "java -jar [name of jar]"
+All applications are build with Spring-Boot and Maven. Run mvn install in each folder to create a fat-jar. Execute jar with "java -jar [name of jar]"
 
 The following applications are available:
 
