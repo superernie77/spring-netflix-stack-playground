@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Currency Converter</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <form autocomplete="off" action="#" th:action="@{/guestbook}"
+                  th:object="${entry}" method="post" class="form-horizontal"
+                  role="form">
+                    <div class="col-md-8">
+                        <label class="label label-primary">Title</label>
+                        <input type="text" th:field="*{title}"
+                               class="form-control"/>
+                    </div>
+
+                    <div class="col-md-8">
+                        <label class="label label-primary">Text</label>
+                        <input type="text" th:field="*{text}"
+                               class="form-control"/>
+                    </div>
+
+                    <div class="col-md-8">
+                        <label class="label label-primary">Author</label>
+                        <input type="text" th:field="*{author}" 
+                               class="form-control"/>
+                    </div>
+                  
+	                <br/>
+                
+                    <div class="col-md-8">
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                    </div>
+               
+            </form>
+
+            <div th:if="${entries}">
+                <h3>Entries</h3>
+
+                <table class="table">
+                    <tr>
+                        <th>Title</th>
+                        <th>Text</th>
+                        <th>Author</th>
+                    </tr>
+                    <tr th:each="bean : ${entries}">
+                        <td th:text="${bean.title}">Title</td>
+                        <td th:text="${bean.text}">Text</td>
+                        <td th:text="${bean.author}">Author</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
