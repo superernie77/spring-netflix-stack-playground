@@ -1,5 +1,7 @@
 package com.supere77.netflix;
 
+import java.util.List;
+
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -12,5 +14,8 @@ public interface BackendClient {
 	// method equals the one you want to call in the backend. use full path to backend rest servcie "/guestbook/"
 	@RequestMapping(value = "/guestbook/" , method= RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE , produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<GuestbookEntry> create(GuestbookEntry entry);
+	
+	@RequestMapping(value = "/guestbook/" , method= RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE , produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<GuestbookEntry>> getAll();
 
 }
