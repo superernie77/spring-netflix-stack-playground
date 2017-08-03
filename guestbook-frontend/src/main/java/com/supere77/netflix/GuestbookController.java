@@ -35,11 +35,11 @@ public class GuestbookController {
         modelAndView.setViewName("guestbook");
         
         // call with circuitbreaker
-        backendService.create(entry);
+        //backendService.create(entry);
         
         
         // direct call with feign client
-        //backendClient.create(entry);
+        backendClient.create(entry);
         
 	    modelAndView.addObject("entries", backendClient.getAll().getBody());
         
