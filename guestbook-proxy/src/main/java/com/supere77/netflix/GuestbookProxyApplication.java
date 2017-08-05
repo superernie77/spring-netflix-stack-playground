@@ -12,5 +12,7 @@ public class GuestbookProxyApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GuestbookProxyApplication.class, args);
+		
+		System.out.println("");
 	}
 }
