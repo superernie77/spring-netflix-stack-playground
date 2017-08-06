@@ -2,7 +2,8 @@
 Demo application using the Netflix stack (Zuul, Hystrix, Eureka, Feign)
 
 All applications are build with Spring-Boot and Maven. Run 
-```mvn install 
+```
+mvn install 
 ```
 in each folder to create a fat-jar. 
 Execute the jar with 
