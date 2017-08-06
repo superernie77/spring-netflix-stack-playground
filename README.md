@@ -1,9 +1,15 @@
 # spring-netflix-stack-playground
 Demo application using the Netflix stack (Zuul, Hystrix, Eureka, Feign)
 
-All applications are build with Spring-Boot and Maven. Run mvn install in each folder to create a fat-jar. Execute jar with "java -jar [name of jar]"
-
-
+All applications are build with Spring-Boot and Maven. Run 
+```
+mvn install 
+```
+in each folder to create a fat-jar. 
+Execute the jar with 
+```
+java -jar [name of jar]"
+```
 
 The following applications are available:
 
@@ -16,13 +22,21 @@ The following applications are available:
 Check out all apps and start all fat-jars to run the complete app.
 guestbook-discovery must be started first.
 
-
-
-
 Link to App (via proxy):
 http://localhost:8000/
 
 Link to Eureka Registry:
 http://localhost:8761/
+
+# Docker setup
+To build docker images for all apps, run the following Maven command from the root directory of the project:
+```
+mvn package docker:build
+```
+
+To start all images, use the docker-compose.yml file in the root directory
+```
+docker-compose up -d
+```
 
 
