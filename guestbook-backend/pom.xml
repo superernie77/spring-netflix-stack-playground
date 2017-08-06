@@ -70,13 +70,9 @@
 				<version>1.0.0</version>
 				<configuration>
 					<imageName>${project.artifactId}</imageName>
-					<dockerDirectory>/</dockerDirectory>
-					<entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
-					<!-- copy the service's jar file from target into the root directory 
-						of the image -->
+					<dockerDirectory>src/main/docker</dockerDirectory>
 					<resources>
 						<resource>
-							<targetPath>${docker.resource.targetPath}</targetPath>
 							<directory>${project.build.directory}</directory>
 							<include>${project.build.finalName}.jar</include>
 						</resource>
@@ -85,6 +81,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
 </project>
