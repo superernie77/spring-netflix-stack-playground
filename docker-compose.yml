@@ -1,0 +1,54 @@
+version: '2'
+services:
+    discovery:
+        image: guestbook-discovery
+        container_name: gb-discovery
+        ports:
+            - 8761:8761
+    frontend:
+        image: guestbook-frontend
+        container_name: gb-frontend
+        links:
+            - discovery
+        depends_on:
+            - discovery
+    mail:
+        image: guestbook-mail
+        container_name: gb-mail
+        links:
+            - discovery
+        depends_on:
+            - discovery
+    backend:
+        image: guestbook-backend
+        container_name: gb-backend
+        links:
+            - discovery
+            - mail
+        depends_on:
+            - discovery
+            - mail
+    proxy:
+        image: guestbook-proxy
+        container_name: gb-proxy
+        ports:
+            - 8000:8000
+        links:
+            - discovery
+            - frontend
+            - backend
+        depends_on:
+            - discovery
+            - backend
+            - frontend
+#hystrix:
+#image: guestbook-hystrix-stream
+#container_name: gb-hystrix
+#ports:
+#- 12000:12000
+#links:
+#- discovery
+#- backend
+#depends_on:
+#- discovery
+#- backend
