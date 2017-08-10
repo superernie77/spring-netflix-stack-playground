@@ -18,4 +18,5 @@
 		<module>guestbook-mail</module>
 		<module>guestbook-proxy</module>
     </modules>
+	
 </project>
