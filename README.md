@@ -38,5 +38,10 @@ To start all images, use the docker-compose.yml file in the root directory
 ```
 docker-compose up -d
 ```
+The docker-maven plugin is also registered in the install-phase of the maven build. To build all applications AND build all docker images execute
+´´´
+mvn install
+´´´
+from the root directory of the project.
 
 
