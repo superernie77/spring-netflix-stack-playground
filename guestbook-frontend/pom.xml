@@ -67,6 +67,14 @@
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
 				<version>1.0.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>build</goal>
+						</goals>
+						<phase>install</phase>
+			</execution>
+		</executions>
 				<configuration>
 					<imageName>${project.artifactId}</imageName>
 					<dockerDirectory>guestbook-frontend/src/main/docker</dockerDirectory>
