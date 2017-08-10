@@ -62,7 +62,7 @@
 				<artifactId>docker-maven-plugin</artifactId>
 				<configuration>
 					<imageName>${project.artifactId}</imageName>
-					<dockerDirectory>src/main/docker</dockerDirectory>
+					<dockerDirectory>guestbook-discovery/src/main/docker</dockerDirectory>
 					<resources>
 						<resource>
 							<directory>${project.build.directory}</directory>

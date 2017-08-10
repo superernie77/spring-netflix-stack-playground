@@ -70,7 +70,7 @@
 				<version>1.0.0</version>
 				<configuration>
 					<imageName>${project.artifactId}</imageName>
-					<dockerDirectory>src/main/docker</dockerDirectory>
+					<dockerDirectory>guestbook-backend/src/main/docker</dockerDirectory>
 					<resources>
 						<resource>
 							<directory>${project.build.directory}</directory>
