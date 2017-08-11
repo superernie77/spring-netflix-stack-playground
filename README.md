@@ -33,10 +33,20 @@ To build docker images for all apps, run the following Maven command from the ro
 ```
 mvn package docker:build
 ```
-
-To start all images, use the docker-compose.yml file in the root directory
+To start all images as docker container, use the docker-compose.yml file in the root directory
 ```
 docker-compose up -d
 ```
+The app is available under the following URL (change the IP to the one you run your docker on)
+```
+http://192.168.99.100:8000/  (Guestbook)
+http://192.168.99.100:8761/  (Eureka Registry)
+```
+
+The docker-maven plugin is also registered in the install-phase of the maven build. To build all applications AND build all docker images execute
+```
+mvn install
+```
+from the root directory of the project.
 
 
