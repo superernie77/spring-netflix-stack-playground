@@ -1,5 +1,9 @@
 package com.supere77.netflix;
 
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,18 +34,25 @@ public class GuestbookController {
 	}
 	
 	@RequestMapping(value = {"/"}, method = RequestMethod.POST)
-	public ModelAndView addEntry(@Valid GuestbookEntry entry) {
+	public ModelAndView addEntry(@Valid GuestbookEntry entry) throws InterruptedException, ExecutionException {
 		ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("guestbook");
         
         // call with circuitbreaker
-        //backendService.create(entry);
+        Future<Boolean> done = backendService.create(entry);
         
         
         // direct call with feign client
-        backendClient.create(entry);
+        //backendClient.create(entry);
         
-	    modelAndView.addObject("entries", backendClient.getAll().getBody());
+        // wait for insert to be finished before reading
+        // Hysterix call is async
+        List<GuestbookEntry> entries = null;
+        if (done.get()) {
+        	entries = backendClient.getAll().getBody();	
+        }
+        
+	    modelAndView.addObject("entries", entries);
         
         modelAndView.addObject("entry", new GuestbookEntry());
         return modelAndView;
