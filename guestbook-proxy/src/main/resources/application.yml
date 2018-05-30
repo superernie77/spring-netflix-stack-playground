@@ -7,9 +7,9 @@ spring:
   
 eureka:
   client:
-    service-url:
-      defaultZone: http://discovery:8761/eureka/
-
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/  # rthis needs to match the coresponding eureka server value
+      
 zuul:
   routes:
     backend:
