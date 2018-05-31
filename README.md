@@ -1,7 +1,7 @@
 # spring-netflix-stack-playground
-Demo application using the Netflix stack (Zuul, Hystrix, Eureka, Feign)
+A simple guestbook application implemented with the Spring-Boot and the Spring-Netflix-Stack (Zuul, Hystrix, Eureka, Feign).
 
-All applications are build with Spring-Boot and Maven. Run 
+All applications can be build with Maven. Run 
 ```
 mvn install 
 ```
@@ -33,17 +33,17 @@ To build docker images for all apps, run the following Maven command from the ro
 ```
 mvn package docker:build
 ```
-To start all images as docker container, use the docker-compose.yml file in the root directory
+To start all images as docker containers, use the docker-compose.yml file in the root directory from the command line:
 ```
 docker-compose up -d
 ```
-The app is available under the following URL (change the IP to the one you run your docker on)
+When started, the application is available under the following URL (change the IP to the one you run your docker on)
 ```
 http://192.168.99.100:8000/  (Guestbook)
 http://192.168.99.100:8761/  (Eureka Registry)
 ```
 
-The docker-maven plugin is also registered in the install-phase of the maven build. To build all applications AND build all docker images execute
+The docker-maven plugin is also registered in the maven install-phase. To build all applications AND build all docker images execute
 ```
 mvn install
 ```

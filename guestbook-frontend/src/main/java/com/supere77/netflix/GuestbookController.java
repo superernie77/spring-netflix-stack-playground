@@ -50,6 +50,7 @@ public class GuestbookController {
         List<GuestbookEntry> entries = null;
         if (done.get()) {
         	entries = backendClient.getAll().getBody();	
+        
         }
         
 	    modelAndView.addObject("entries", entries);
