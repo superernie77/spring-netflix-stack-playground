@@ -28,6 +28,9 @@ http://localhost:8000/
 Link to Eureka Registry:
 http://localhost:8761/
 
+Link to Hystrix Dashboard:
+http://localhost:8081/hystrix/monitor?stream=http%3A%2F%2Flocalhost%3A8081%2Fhystrix.stream
+
 # Docker setup
 To build docker images for all apps, run the following Maven command from the root directory of the project:
 ```
